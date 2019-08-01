@@ -5,8 +5,12 @@
 <body>
 <div id="back">
 <div id="cent">
-<p> WELCOME PAGE </p>
-</div>
+	<% if user_signed_in? %>
+	  <p> WELCOME <%= current_user.email %> </p>
+	<% else %>
+	  <p> WELCOME GUEST </p>
+    <%end%>
+	</div>
 </div>
 </body>
 </html>
