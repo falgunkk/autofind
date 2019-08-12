@@ -40,13 +40,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'gmail.com',
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: 'alexsam374',
-    password: '123qweAadmin'
-  }
+  if File.exist?(Rails.root.join('config', 'email.yml'))
+    config.action_mailer.smtp_settings = YAML.load_file(File.open(Rails.root.join('config', 'email.yml')))
+  end
+
 end
