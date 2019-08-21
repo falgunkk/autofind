@@ -1,0 +1,5 @@
+email_send_job:
+  every: "20s"
+  queue: "high_priority"
+  class: "EmailSendJob"
+  description: "This job will trigger every 20 secnd and send test mail"
